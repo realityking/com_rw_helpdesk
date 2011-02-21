@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<fieldset name="general" label="COM_HELPDESK_CONFIG_GENERAL_SETTINGS_LABEL">
+		<field
+			name="send_mail"
+			type="radio"
+			default="1"
+			label="COM_HELPDESK_CONFIG_NOTIFICATIONS_LABEL"
+			description="COM_HELPDESK_CONFIG_NOTIFICATIONS_DESC">
+				<option value="0">JNo</option>
+				<option value="1">JYes</option>
+		</field>
+
+		<field
+			name="entries_perpage"
+			type="text"
+			size="3"
+			default="5"
+			label="COM_HELPDESK_CONFIG_ENTRIES_NUMBER_LABEL"
+			description="COM_HELPDESK_CONFIG_ENTRIES_NUMBER_DESC"/>
+
+		<field
+			name="entries_order"
+			type="radio"
+			default="DESC"
+			label="COM_HELPDESK_CONFIG_ENTRIES_ORDER_LABEL"
+			description="COM_HELPDESK_CONFIG_ENTRIES_ORDER_DESC">
+			<option value="DESC">COM_HELPDESK_CONFIG_NEW_ENTRIES_FIRST</option>
+			<option value="ASC">COM_HELPDESK_CONFIG_NEW_ENTRIES_LAST</option>
+		</field>
+
+		<field
+			name="show_introtext"
+			type="radio"
+			default="0"
+			label="COM_HELPDESK_CONFIG_SHOW_INTROTEXT_LABEL"
+			description="COM_HELPDESK_CONFIG_SHOW_INTROTEXT_DESC">
+			<option value="0">JNo</option>
+			<option value="1">JYes</option>
+		</field>
+
+		<field
+			name="introtext"
+			type="textarea"
+			value="Welcome to Helpdesk"
+			rows="4"
+			cols="30"
+			label="COM_HELPDESK_CONFIG_INTROTEXT_LABEL"
+			description="COM_HELPDESK_CONFIG_INTROTEXT_DESC"/>
+
+		<field
+			name="enable_log"
+			type="radio"
+			default="1"
+			label="COM_HELPDESK_CONFIG_IP_LOGGING_LABEL"
+			description="COM_HELPDESK_CONFIG_IP_LOGGING_DESC">
+			<option value="0">JNo</option>
+			<option value="1">JYes</option>
+		</field>
+
+		<field
+			name="require_mail"
+			type="radio"
+			default="1"
+			label="COM_HELPDESK_CONFIG_REQUIRE_MAIL_LABEL"
+			description="COM_HELPDESK_CONFIG_REQUIRE_MAIL_DESC">
+			<option value="0">JNo</option>
+			<option value="1">JYes</option>
+		</field>
+
+		<field
+			name="show_fac"
+			type="radio"
+			default="1"
+			label="COM_HELPDESK_CONFIG_SHOW_FACILITY_NUMBER_LABEL"
+			description="COM_HELPDESK_CONFIG_SHOW_FACILITY_NUMBER_DESC">
+			<option value="0">JHide</option>
+			<option value="1">JShow</option>
+		</field>
+
+		<field
+			name="show_major"
+			type="radio"
+			default="1"
+			label="COM_HELPDESK_CONFIG_SHOW_MAJOR_LABEL"
+			description="COM_HELPDESK_CONFIG_SHOW_MAJOR_DESC">
+			<option value="0">JHide</option>
+			<option value="1">JShow</option>
+		</field>
+
+		<field
+			name="show_upload"
+			type="radio"
+			default="1"
+			label="COM_HELPDESK_CONFIG_SHOW_UPLOAD_LABEL"
+			description="COM_HELPDESK_CONFIG_SHOW_UPLOAD_DESC">
+			<option value="0">JHide</option>
+			<option value="1">JShow</option>
+		</field>
+		
+		<field
+			name="file_dir"
+			type="text"
+			size="25"
+			default="./uploads"
+			label="COM_HELPDESK_CONFIG_UPLOAD_DIRECTORY_LABEL"
+			description="COM_HELPDESK_CONFIG_UPLOAD_DIRECTORY_DESC"/>		
+
+		<field
+			name="file_type"
+			type="text"
+			size="25"
+			default=".jpg,.gif,.jpeg,.png,.zip,.doc,.pdf"
+			label="COM_HELPDESK_CONFIG_ALLOWED_EXTENSIONS_LABEL"
+			description="COM_HELPDESK_CONFIG_ALLOWED_EXTENSIONS_DESC"/>
+
+		<field
+			name="file_size"
+			type="text"
+			size="10"
+			default="10240000"
+			label="COM_HELPDESK_CONFIG_MAXIMUM_FILE_SIZE_LABEL"
+			description="COM_HELPDESK_CONFIG_MAXIMUM_FILE_SIZE_DESC"/>
+
+		<field
+			name="default_published"
+			type="radio"
+			default="1"
+			label="COM_HELPDESK_CONFIG_PUBLISH_ENTRIES_LABEL"
+			description="COM_HELPDESK_CONFIG_PUBLISH_ENTRIES_DESC">
+			<option value="0">JNo</option>
+			<option value="1">JYes</option>
+		</field>
+	</fieldset>
+
+	<fieldset name="permissions" label="JCONFIG_PERMISSIONS_LABEL" description="JCONFIG_PERMISSIONS_DESC">
+		<field
+			name="rules"
+			type="rules"
+			label="JCONFIG_PERMISSIONS_LABEL"
+			class="inputbox"
+			validate="rules"
+			filter="rules"
+			component="com_helpdesk"
+			section="component"/>
+	</fieldset>
+</config>

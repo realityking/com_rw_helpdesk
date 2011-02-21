@@ -1,0 +1,19 @@
+.icon-48-helpdesk {
+	background-image: url(../images/helpdesk_icon.png);
+}
+
+.helpdesk-declined {
+	color: black;
+}
+
+.helpdesk-in-progress {
+	color: green;
+}
+
+.helpdesk-not-in-progress {
+	color: red;
+}
+
+.helpdesk-finished {
+	color: green;
+}

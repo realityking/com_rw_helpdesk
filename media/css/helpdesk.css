@@ -1,0 +1,260 @@
+.h_frame.red .h_top_right{
+	background-color: #ff0000;
+}
+
+.h_frame.yellow .h_top_right{
+	background-color: #FFCC11;
+}
+
+.h_frame.green .h_top_right{
+	background-color: #4CBB17;
+}
+
+.h_top {
+	background-color:#e2e2e2;
+	height: 30px;
+}
+
+.h_top_left {
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	float: left;
+}
+
+.h_top_right {
+	float: right;
+	padding: 5px 10px 5px 35px;
+	color: #ffffff;
+	width: 140px;
+	font-weight: bold;
+	text-align: right;
+	background: url("../../../templates/AStA/images/default/helper_images/100_from_grey.png") repeat-y scroll left center transparent;
+}
+
+.h_big {
+	font-size: 14px;
+	vertical-align: middle;
+}
+
+.h_small {
+	font-size: 10px;
+	vertical-align: middle;
+}
+
+.h_small_red {
+	color: #e8523e;
+	font-size: 9px; 
+	vertical-align: middle;
+}
+
+.h_pagination {
+	font-size: 16px;
+	text-align:center;
+	display: block;
+}
+
+.h_align_middle {
+	vertical-align: middle;
+}
+
+.h_admincomment {
+	clear: both;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 10px;
+	padding-bottom: 15px;
+	margin-bottom: 8px;
+	color: #666666;
+}
+
+.h_file {
+	float:left;
+	margin-right: 10px;
+	position:relative;
+}
+
+.h_file img {
+	width:120px;
+}
+.h_content {
+	margin-left: 10px;
+	text-align: justify;
+	margin-right: 10px;
+	margin-top: 8px;
+	padding: 10px;
+	padding-bottom: 15px;
+	margin-bottom: 8px;
+}
+
+.h_footer {
+	clear: both;
+	margin: 8px 0 0;
+	text-align: right;
+}
+
+#system-message {
+	background: #FFCC11;
+	color: #ffffff;
+}
+
+#hfooter {
+	margin-top: 10px;
+}
+
+#helpdesk span.pagination {
+	text-align:center;
+	display: block;
+}
+
+#helpdesk h2 {
+	margin: 0;
+}
+
+#helpdesk p.clr {
+	clear: none;
+}
+
+#helpdesk dl{
+	margin: 0;
+	padding: 0;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#helpdesk p.date {
+	margin: 0;
+	padding: 0;
+	border-bottom: 1px solid #5F5F5F;
+}
+
+#helpdesk p.rate {
+	float: right;
+	margin: 0;
+	padding: 0;
+	margin-right: 10px;
+}
+
+#helpdesk dt {
+	float: left;
+}
+
+#helpdesk dt strong {
+	display: block;
+	margin-left: 5px;
+}
+
+#helpdesk dt em {
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	margin-left: 5px;
+}
+
+#helpdesk dd {
+	min-height: 40px;
+	height: auto !important;
+	height: 40px;
+	margin-left: 150px;
+}
+
+#helpdesk a span {
+	display: none;
+}
+
+#helpdesk a.hp {
+	float: left;
+	display: block;
+	height: 16px;
+	width: 16px;
+	margin-top: 3px;
+	margin-right: 2px;
+}
+
+#helpdesk a.view {
+	float: right;
+}
+
+#helpdesk a.sign {
+	text-align: center;
+	margin: 0 auto 10px;
+}
+
+#helpdesk a.email {
+	float: left;
+	display: block;
+	height: 16px;
+	width: 16px;
+	margin-top: 3px;
+	margin-right: 2px;
+}
+
+#helpdesk a.fac {
+	float: left;
+	display: block;
+	height: 16px;
+	width: 16px;
+	margin-right: 2px;
+	margin-top: 3px;
+}
+
+#helpdesk a.major {
+	float: left;
+	display: block;
+	height: 16px;
+	width: 16px;
+	margin-top: 3px;
+	margin-right: 2px;
+}
+
+#helpdesk a.file {
+	float: left;
+	display: block;
+	height: 16px;
+	width: 16px;
+	margin-top: 3px;
+	margin-right: 2px;
+}
+
+#helpdesk fieldset#form {
+	border: 0;
+	width: 460px;
+}
+
+#helpdesk fieldset#form legend {
+	display: none;
+}
+
+#helpdesk fieldset#form p{
+	margin: 0;
+	font-size: 13px;
+	margin: 18px;
+}
+
+#helpdesk fieldset#form label{
+	display: block;
+	width: 7em;
+	float: left;
+}
+
+#helpdesk fieldset#form input {
+	width:245px;
+}
+
+#helpdesk fieldset#form textarea {
+	width: 245px;
+}
+
+#helpdesk fieldset#form input.button {
+	padding: 0;
+	width: 60px;
+	cursor: pointer;
+}
+
+#helpdesk p.admincomment{
+	margin: 0;
+	padding: 0;
+	border-top: 1px solid #5F5F5F;
+	margin-top: 6px;
+}
+

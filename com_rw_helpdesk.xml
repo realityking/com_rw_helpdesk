@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="1.6" method="upgrade">
+	<name>com_helpdesk</name>
+	<author>Rouven Weßling</author>
+	<creationDate>6 Feburary 2011</creationDate>
+	<copyright>Copyright 2011 Rouven Weßling. All rights reserved. Original component by SFox.</copyright>
+	<license>Released under GNU/GPL</license>
+	<authorEmail>me@rouvenwessling.de</authorEmail>
+	<authorUrl>http://www.rouvenwessling.de</authorUrl>
+	<version>1.2</version>
+	<description>COM_HELPDESK_XML_DESCRIPTION</description>
+
+	<files folder="site">
+		<filename>index.html</filename>
+		<filename>helpdesk.php</filename>
+		<filename>controller.php</filename>
+		<filename>router.php</filename>
+		<folder>controllers</folder>
+		<folder>helpers</folder>
+		<folder>views</folder>
+		<folder>models</folder>
+		<folder>scripts</folder>
+	</files>
+
+	<languages  folder="site/language">
+		<language tag="en-GB">en-GB.com_helpdesk.ini</language>
+	</languages>
+
+	<media folder="media" destination="com_helpdesk">
+		<folder>images</folder>
+		<folder>css</folder>
+	</media>
+
+	<install>
+		<sql>
+			<file charset="utf8" driver="mysql">install.sql</file>
+		</sql>
+	</install>
+
+	<administration>
+		<menu img="../media/com_helpdesk/images/helpdesk_ico.png">COM_HELPDESK_HELPDESK_MENU</menu>
+
+		<files folder="admin">
+			<filename>index.html</filename>
+			<filename>config.xml</filename>
+			<filename>access.xml</filename>
+			<filename>helpdesk.php</filename>
+			<filename>controller.php</filename>
+			<folder>models</folder>
+			<folder>helpers</folder>
+			<filename>install.sql</filename>
+			<folder>images</folder>
+			<folder>views</folder>
+			<folder>controllers</folder>
+			<folder>tables</folder>
+		</files>
+
+		<languages folder="admin/language">
+			<language tag="en-GB">en-GB.com_helpdesk.sys.ini</language>
+			<language tag="en-GB">en-GB.com_helpdesk.ini</language>
+		</languages>
+	</administration>
+</extension>

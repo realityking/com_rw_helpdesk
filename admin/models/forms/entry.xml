@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+		<field name="id"  type="hidden" default="0" />
+
+		<field name="hname" type="text" label="COM_HELPDESK_NAME"
+			description="COM_HELPDESK_NAME_DESC" size="30"
+			required="true" />
+
+		<field name="hfname" type="text" label="COM_HELPDESK_FULLNAME"
+			description="COM_HELPDESK_FULLNAME_DESC" size="30"
+			required="true" />
+
+		<field name="hfac" type="text" label="COM_HELPDESK_FACILITY"
+			description="COM_HELPDESK_FACILITY_DESC" size="30" />
+
+		<field name="hmajor" type="text" label="COM_HELPDESK_MAJOR"
+			description="COM_HELPDESK_MAJOR_DESC" size="30" />
+
+		<field name="hmail" type="email" label="JGLOBAL_EMAIL"
+			description="COM_HELPDESK_EMAIL_DESC" size="30"
+			required="true" />
+	
+		<field name="published" type="list" label="JGLOBAL_STATE"
+			description="JFIELD_PUBLISHED_DESC"
+			filter="intval" size="1" default="0">
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>
+
+		<field name="hstatus" type="list" label="COM_HELPDESK_STATUS"
+			description="COM_HELPDESK_STATUS_DESC"
+			filter="intval" size="1" default="1">
+			<option value="-1">COM_HELPDESK_DECLINED</option>
+			<option value="0">COM_HELPDESK_NOT_IN_PROGRESS</option>
+			<option value="1">COM_HELPDESK_IN_PROGRESS</option>
+			<option value="2">COM_HELPDESK_FINISHED</option>
+		</field>
+
+		<field name="declinemail" type="radio" label="COM_HELPDESK_DECLINE_MAIL"
+			description="COM_HELPDESK_DECLINE_MAIL_DESC"
+			filter="intval" size="1" default="0">
+			<option value="0">JYES</option>
+			<option value="1">JNO</option>
+		</field>
+
+		<field name="htext" type="editor" label="COM_HELPDESK_MESSAGE"
+			description="COM_HELPDESK_MESSAGE_DESC"
+			required="true" filter="ContentHelper::filterText" buttons="true" />
+		
+		<field name="hcomment" type="editor" label="COM_HELPDESK_COMMENT"
+			description="COM_HELPDESK_COMMENT_DESC"
+			filter="ContentHelper::filterText" buttons="true" />
+
+		<field name="hip" type="text" label="COM_HELPDESK_VISITOR_IP"
+			description="COM_HELPDESK_VISITOR_IP_DESC" size="25"
+			readonly="true" />
+	
+		<field name="hdate" type="calendar" label="COM_HELPDESK_DATE"
+			description="COM_HELPDESK_DATE_DESC" size="25"
+			required="true" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />
+	</fieldset>
+</form>
