@@ -81,6 +81,6 @@ defined('_JEXEC') or die ('Restricted access');
 		<?php echo $this->form->getInput('id'); ?>
 		<input type="hidden" name="task" value="" />
 		<input type="hidden" name="controller" value="entry" />
-		<?php echo JHTML::_( 'form.token' ); ?>
+		<?php echo JHtml::_( 'form.token' ); ?>
 	</div>
 </form>

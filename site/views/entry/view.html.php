@@ -21,7 +21,7 @@ class HelpdeskViewEntry extends JView
 		$task	= JRequest::getVar( 'task' );
 
 		// Set CSS File
-		JHTML::_('stylesheet', 'helpdesk.css', JURI::root().'/media/com_helpdesk/css/');
+		JHtml::_('stylesheet', 'helpdesk.css', JURI::root().'/media/com_helpdesk/css/');
 
 		// Get data from the model
 		$entry	= & $this->get( 'Data');

@@ -15,7 +15,7 @@ class HelpdeskViewEntry extends JView
 	{
 	    jimport('joomla.html.pane');
 	     
-	    JHTML::_('stylesheet', 'admin.css', JURI::root().'/media/com_helpdesk/css/');
+	    JHtml::_('stylesheet', 'admin.css', JURI::root().'/media/com_helpdesk/css/');
 	     
 	    $entry =& $this->get('Data');
 	    $this->item = $this->get('Data');

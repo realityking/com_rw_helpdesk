@@ -38,7 +38,7 @@ class HelpdeskViewHelpdesk extends JView
 		if ($canDo->get('core.admin')) {
 			JToolBarHelper::preferences('com_helpdesk', '500');
 		}
-		JHTML::_('stylesheet', 'admin.css', JURI::root().'/media/com_helpdesk/css/');
+		JHtml::_('stylesheet', 'admin.css', JURI::root().'/media/com_helpdesk/css/');
 
         // Get data from the model
 		$items		=& $this->get( 'Data');

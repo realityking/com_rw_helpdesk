@@ -25,7 +25,7 @@ class HelpdeskViewHelpdesk extends JView
 		$params = &$app->getParams('com_helpdesk');
 		
 		// Set CSS File
-		JHTML::_('stylesheet', 'helpdesk.css', JURI::root().'/media/com_helpdesk/css/');
+		JHtml::_('stylesheet', 'helpdesk.css', JURI::root().'/media/com_helpdesk/css/');
 		
 		// Get some Data
 		$entrys		= $this->get( 'Data' );

@@ -5,7 +5,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 <h2 class="componentheading"><?php echo $this->heading ?></h2>
 <a class="view" href="<?php echo JRoute::_('index.php?option=com_helpdesk&view=helpdesk'); ?>">
 <strong><?php echo JText::_( 'Read Helpdesk'); ?>
-<?php echo JHTML::_('image', JURI::root().'/media/com_helpdesk/images/book.png', JText::_('Read Helpdesk').":", 'height="16" width="16" style="vertical-align: middle;"'); ?></strong></a>
+<?php echo JHtml::_('image', JURI::root().'/media/com_helpdesk/images/book.png', JText::_('Read Helpdesk').":", 'height="16" width="16" style="vertical-align: middle;"'); ?></strong></a>
 <br />
 <br />
 <script type="text/javascript">
@@ -31,7 +31,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
     			  $count=1;
     			  $smiley = HelpdeskHelperSmilie::getSmilies();
 			      foreach ($smiley as $i=>$sm) {
-			        echo "<a href=\"javascript:h_smilie('$i')\" title='$i'>". JHTML::_('image', JPATH_ROOT.'/media/com_helpdesk/images/smilies/'.$sm, $sm )."</a> ";
+			        echo "<a href=\"javascript:h_smilie('$i')\" title='$i'>". JHtml::_('image', JPATH_ROOT.'/media/com_helpdesk/images/smilies/'.$sm, $sm )."</a> ";
 			        if ($count%4==0) echo "<br />";
 			        $count++;
 			      }

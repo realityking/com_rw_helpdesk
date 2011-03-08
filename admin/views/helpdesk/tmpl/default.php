@@ -46,7 +46,7 @@ defined('_JEXEC') or die ('Restricted access');
     ?>
         <tr class="<?php echo "row$k"; ?>">
             <td>
-  				  <?php echo JHTML::_( 'grid.id', $i, $row->id ); ?>
+  				  <?php echo JHtml::_( 'grid.id', $i, $row->id ); ?>
 			</td>
             <td>
                 <?php echo $row->hname; ?>
@@ -55,7 +55,7 @@ defined('_JEXEC') or die ('Restricted access');
                 <span class="hasTip" title="<?php echo $row->htext?>"><a href="<?php echo $link ?>"><?php echo substr($row->htext,0,50)."..."; ?></a></span>
             </td>
             <td>
-                <?php echo JHTML::_('date', $row->hdate, JText::_('DATE_FORMAT_LC2')) ?>
+                <?php echo JHtml::_('date', $row->hdate, JText::_('DATE_FORMAT_LC2')) ?>
             </td>
             <td>
                 <?php
@@ -79,7 +79,7 @@ defined('_JEXEC') or die ('Restricted access');
 				<?php if($row->hcomment){ echo '<img src="images/tick.png" class="hasTip" title="'.$row->hcomment.'" alt="Has a comment" />';} ?>
 			</td>
 			<td class="center">
-				<?php echo JHTML::_('grid.published', $row, $i ); ?>
+				<?php echo JHtml::_('grid.published', $row, $i ); ?>
 			</td>
 		</tr>
 		<?php
@@ -92,7 +92,7 @@ defined('_JEXEC') or die ('Restricted access');
 	<input type="hidden" name="task" value="" />
 	<input type="hidden" name="boxchecked" value="0" />
 	<input type="hidden" name="controller" value="entry" />
-	<?php echo JHTML::_('form.token'); ?>
+	<?php echo JHtml::_('form.token'); ?>
 </div>
 </form>
 <div class="padding">

@@ -12,7 +12,7 @@ global $Itemid;
 	<fieldset>
 		<a class="view" href="<?php echo JRoute::_('index.php?option=com_helpdesk&view=helpdesk&Itemid='.$Itemid); ?>">
 			<strong style="float: right;"><?php echo JText::_( 'Read Helpdesk'); ?>
-			<?php echo JHTML::_('image', JURI::root().'media/com_helpdesk/images/book.png', JText::_('Read Helpdesk').":", 'height="16" width="16" class="png" style="vertical-align: middle;"'); ?></strong>
+			<?php echo JHtml::_('image', JURI::root().'media/com_helpdesk/images/book.png', JText::_('Read Helpdesk').":", 'height="16" width="16" class="png" style="vertical-align: middle;"'); ?></strong>
 		</a>
 
 		<legend><?php echo JText::_('New Entry'); ?></legend>

@@ -82,7 +82,7 @@ if ($entry->published) {
 <?php echo HelpdeskHelperContent::parse($entry->htext) ?>
 <div class="h_footer"><b class="h_small"><?php echo $entry->hfname . " " . substr($entry->hname,0,1) . ". | "; ?>
 <?php
-	echo JHTML::_('date', $entry->hdate, JText::_('DATE_FORMAT_LC2')). "";
+	echo JHtml::_('date', $entry->hdate, JText::_('DATE_FORMAT_LC2')). "";
 	if (!$entry->published) echo " | </b><b class='h_small_red'>". JText::_( 'Entry offline');
 ?>
 </b></div>
@@ -91,7 +91,7 @@ if ($entry->published) {
 
 <?php if($entry->hcomment){ ?>
 <div class="h_admincomment">
-<?php echo JHTML::_('image', JURI::root().'media/com_helpdesk/images/admin.png', JText::_('Admin Comment:'), 'class="h_align_middle" style="padding-bottom: 2px;"'); ?>
+<?php echo JHtml::_('image', JURI::root().'media/com_helpdesk/images/admin.png', JText::_('Admin Comment:'), 'class="h_align_middle" style="padding-bottom: 2px;"'); ?>
 <b><?php echo JText::_( 'COM_HELPDESK_ADMIN_COMMENT'); ?>:</b>
 <br />
 <?php echo HelpdeskHelperContent::parse($entry->hcomment) ?>
