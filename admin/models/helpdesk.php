@@ -49,7 +49,7 @@ class HelpdeskModelHelpdesk extends JModel
 	 * Returns the query
 	 * @return string The query to be used to retrieve the rows from the database
 	 */
-	function _buildQuery()
+	private function _buildQuery()
 	{
 		$query = "SELECT * FROM #__helpdesk"
 	. " ORDER BY hdate DESC";
@@ -59,9 +59,10 @@ class HelpdeskModelHelpdesk extends JModel
 	
 	/**
 	 * Retrieves the helpdesk entrys
+	 *
 	 * @return array Array of objects containing the data from the database
 	 */
-	function getData()
+	public function getData()
 	{
 		// Lets load the data if it doesn't already exist
 		if (empty( $this->_data )) {
@@ -72,7 +73,7 @@ class HelpdeskModelHelpdesk extends JModel
 		return $this->_data;
 	}
 
-	function getPagination()
+	public function getPagination()
 	{
 		if (empty($this->_pagination)) 	{
 			jimport('joomla.html.pagination');
@@ -83,9 +84,10 @@ class HelpdeskModelHelpdesk extends JModel
 	}
 	/**
 	 * Retrieves the count of helpdesk entrys
+	 *
 	 * @return array Array of objects containing the data from the database
 	 */
-	function getTotal()
+	public function getTotal()
 	{
 		if (empty($this->_total)) {
 			$query = $this->_buildQuery();

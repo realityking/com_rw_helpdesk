@@ -21,7 +21,7 @@
 			description="COM_HELPDESK_EMAIL_DESC" size="30"
 			required="true" />
 	
-		<field name="published" type="list" label="JGLOBAL_STATE"
+		<field name="published" type="list" label="JSTATUS"
 			description="JFIELD_PUBLISHED_DESC"
 			filter="intval" size="1" default="0">
 			<option value="1">JPUBLISHED</option>

@@ -10,7 +10,8 @@ class HelpdeskHelper {
 	/**
 	 * Get the actions
 	 */
-	public static function getActions() {
+	public static function getActions()
+	{
 		$user	= JFactory::getUser();
 		$result	= new JObject;
 

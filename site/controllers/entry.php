@@ -92,15 +92,15 @@ class HelpdeskControllerEntry extends JController
 		$upload_maxsize = $params->get('file_size', '10000000');
 
 		if ((!$id && $canAdd) || ($id && $canEdit)) {
-			$model = $this->getModel( 'entry' );
+			$model = $this->getModel('entry');
 	
 			if ($model->store()) {
 				//Set redirection options
 				if ($params->get('default_published', true)) {
-					$msg .= JText::_( 'Entry Saved' );
+					$msg .= JText::_('COM_HELPDESK_ENTRY_SAVED');
 					$type = 'message';
 				} else {
-					$msg .= JText::_( 'Entry saved but has to be approved');
+					$msg .= JText::_('COM_HELPDESK_ENTRY_NEEDS_APPROVAL');
 					$type = 'notice';
 				}
 				$link = JRoute::_( 'index.php?option=com_helpdesk&view=helpdesk', false );
@@ -125,7 +125,8 @@ class HelpdeskControllerEntry extends JController
 						$upload_base = str_replace(" ", "_", $base[0]);
 						$new_filename = $upload_location . $filename;
 				
-						while (file_exists($new_filename)) {
+						while (file_exists($new_filename))
+						{
 							$upload_base = $upload_base . "_" . $unique_suffix++;
 							$new_filename = $upload_location . $upload_base  . $ext;
 						}
@@ -152,7 +153,7 @@ class HelpdeskControllerEntry extends JController
 						$db->query();		
 					}
 				} else {
-					$msg .= "<br />" . JText::sprintf('Error with upload', $ext) . "<br />" . JText::_('Allowed types') . ": " . $upload_filetypes . "<br />" . JText::_('File max size') . " (kb): " . ($upload_maxsize / 1024)."<br />";
+					$msg .= "<br />" . JText::sprintf('COM_HELPDESK_ERROR_UPLOAD', $ext) . "<br />" . JText::_('Allowed types') . ": " . $upload_filetypes . "<br />" . JText::_('File max size') . " (kb): " . ($upload_maxsize / 1024)."<br />";
 					$link = JRoute::_( 'index.php?option=com_helpdesk&controller=entry&task=add&retry=true', false );
 					$type = 'notice';
 					$ferror = true;
@@ -161,9 +162,9 @@ class HelpdeskControllerEntry extends JController
 
 				//Send information-mail to administrators
 				if ( (!$id AND $params->get('send_mail', true)) && (!$ferror) ) {
-					$mail->setSubject( JTEXT::_( 'New Helpdesk entry' ) );
-					$mail->setBody( JTEXT::sprintf( 'A new helpdeskentry has been written', $uri->base(), $name, $text ) );
-					$mail->addBCC( $admins );
+					$mail->setSubject(JTEXT::_('COM_HELPDESK_ENTRY_NEW_MAIL_SUBJECT'));
+					$mail->setBody(JTEXT::sprintf('COM_HELPDESK_ENTRY_NEW_MAIL_BODY', $uri->base(), $name, $text));
+					$mail->addBCC($admins);
 					$mail->Send();
 				}
 			} else {
@@ -181,17 +182,17 @@ class HelpdeskControllerEntry extends JController
 					if (($filetypeok > 0) && ($filesize < $upload_maxsize)){
 				
 					} else {
-						$msg .= JText::sprintf('Error with upload', $ext) . "<br />" . JText::_('Allowed types') . ": " . $upload_filetypes . "<br />" . JText::_('File max size') . " (kb): " . ($upload_maxsize / 1024)."<br />";				
+						$msg .= JText::sprintf('COM_HELPDESK_ERROR_UPLOAD', $ext) . "<br />" . JText::_('Allowed types') . ": " . $upload_filetypes . "<br />" . JText::_('File max size') . " (kb): " . ($upload_maxsize / 1024)."<br />";				
 					}
 				}
 
-				$msg .= JText::_( 'Error: Please validate your inputs' );
-				$link = JRoute::_( 'index.php?option=com_helpdesk&controller=entry&task=add&retry=true', false );
+				$msg .= JText::_('COM_HELPDESK_ERROR_VALIDATE_INPUTS');
+				$link = JRoute::_('index.php?option=com_helpdesk&controller=entry&task=add&retry=true', false );
 				$type = 'notice';
 			}
-			$this->setRedirect( $link, $msg, $type );
+			$this->setRedirect($link, $msg, $type);
 		} else {
-			JError::raiseError( 403, JText::_( 'ALERTNOTAUTH' ) );
+			JError::raiseError(403, JText::_('ALERTNOTAUTH'));
 		}
 	}
 
@@ -215,44 +216,45 @@ class HelpdeskControllerEntry extends JController
 	function remove()
 	{
 		//Load model and delete entry - redirect afterwards
-		$model = $this->getModel( 'entry' );
+		$model = $this->getModel('entry');
 		if(!$model->delete()) {
-			$msg = JText::_( 'Error: Entry could not be deleted' );
+			$msg = JText::_('COM_HELPDESK_ERROR_ENTRY_DELETED');
 			$type = 'error';
 		} else {
-			$msg = JText::_( 'Entry Deleted' );
+			$msg = JText::_('COM_HELPDESK_ENTRY_DELETED');
 			$type = 'message';
 		}
 		$this->setRedirect( JRoute::_( 'index.php?option=com_helpdesk', false ), $msg, $type );
 	}
 
 	function publish() {
-		$model = $this->getModel( 'entry' );
+		$model = $this->getModel('entry' ;
 		switch($model->publish()) {
-			case -1: $msg = JText::_( 'Error: Could not change publish status' );
+			case -1: $msg = JText::_('COM_HELPDESK_ERROR_ENTRY_CHANGE_PUBLISH_STATUS');
 					 $type = 'error';
 					 break;
-			case 0: $msg = JText::_( 'Entry unpublished' );
+			case 0: $msg = JText::_('COM_HELPDESK_ENTRY_UNPUBLISHED');
 					$type = 'message';
 					break;
-			case 1: $msg = JText::_( 'Entry published' );
+			case 1: $msg = JText::_('COM_HELPDESK_ENTRY_PUBLISHED');
 					$type = 'message';
 					break;
 		}
-		$this->setRedirect( JRoute::_( 'index.php?option=com_helpdesk', false ), $msg, $type );
+		$this->setRedirect( JRoute::_('index.php?option=com_helpdesk', false), $msg, $type );
 	}
  
 	/**
 	 * save a comment
-         * @return void
-	*/
-	function savecomment() {
-		$model = $this->getModel( 'entry' );
+     * @return void
+	 */
+	function savecomment()
+	{
+		$model = $this->getModel('entry');
 		if(!$model->savecomment()) {
-		      $msg = JText::_( 'Error: Could not save comment' );
+		      $msg = JText::_('COM_HELPDESK_COMMENT_ERROR_NOT_SAVED');
 		      $type = 'error';
 		} else {
-		      $msg = JText::_( 'Comment saved' );
+		      $msg = JText::_('COM_HELPDESK_COMMENT_SAVED');
 		      $type = 'message';
 		}
 		$this->setRedirect( JRoute::_( 'index.php?option=com_helpdesk', false ), $msg, $type );

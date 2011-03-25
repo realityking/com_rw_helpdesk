@@ -53,13 +53,13 @@ class HelpdeskModelEntry extends JModel
     	$app = JFactory::getApplication();
     	$user =& JFactory::getUser();
 
-    	if(	JRequest::getVar('retry') == 'true' ) {
+    	if (	JRequest::getVar('retry') == 'true' ) {
     		$this->_data = $this->getTable();
     		$this->_data->bind($app->getUserState('eb_validation_data'));
     	}
 
     	// Load the data
-    	if(empty( $this->_data )) {
+    	if (empty( $this->_data )) {
        	 $query = ' SELECT * FROM #__helpdesk '.
        	         '  WHERE id = '.$this->_id;
        	 $this->_db->setQuery( $query );
@@ -70,7 +70,7 @@ class HelpdeskModelEntry extends JModel
     	    $this->_data = $this->getTable();
     	    $this->_data->id = 0;
     	    //Insert name and email of the registred user
-    	    if($user->get('id')) {
+    	    if ($user->get('id')) {
 	    	    $this->_data->hname = $user->get('name');;
 	    	    $this->_data->hmail = $user->get('email');;
     	    }
@@ -96,10 +96,10 @@ class HelpdeskModelEntry extends JModel
 		$date =& JFactory::getDate();
 
 		// Set Default Values
-		if(!$data['id']) {
+		if (!$data['id']) {
 			$data['hdate'] = $date->toMysql();
 			$data['published'] = $params->get('default_published', 1);
-			if($params->get('enable_log', true)) {
+			if ($params->get('enable_log', true)) {
 				$data['hip'] = getenv('REMOTE_ADDR');
 			} else {
 				$data['hip'] = "0.0.0.0";
@@ -153,7 +153,8 @@ class HelpdeskModelEntry extends JModel
 		return (int)!$status;
 	}
 	
-	function validate(&$data) {
+	function validate(&$data)
+	{
     	$app = JFactory::getApplication();
     	$params = &$app->getParams('com_helpdesk');
     	$user = &JFactory::getUser();
@@ -213,17 +214,18 @@ class HelpdeskModelEntry extends JModel
 		}
 
 		if ($error) {
-			$app->setUserState( 'eb_validation_errors', $errors);
-			$app->setUserState( 'eb_validation_data' , $data);
+			$app->setUserState('eb_validation_errors', $errors);
+			$app->setUserState('eb_validation_data' , $data);
 			return false;
 		} else {
 			return true;
 		}
     }
 
-	function savecomment() {
+	function savecomment()
+	{
 		$row =& $this->getTable();
-    	$data = JRequest::get( 'post' );
+    	$data = JRequest::get('post');
 	    
 	    // Bind the form fields to the table
     	if (!$row->bind($data)) {

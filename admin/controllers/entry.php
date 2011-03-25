@@ -103,7 +103,7 @@ class HelpdeskControllerEntry extends JControllerForm
 		//Load model and delete entry - redirect afterwards
 		$model = $this->getModel( 'entry' );
 		if (!$model->delete()) {
-			$msg = JText::_('COM_HELPDESK_ERROR_ENTRY_NOT_DELETED');
+			$msg = JText::_('COM_HELPDESK_ERROR_ENTRY_DELETED');
 			$type = 'error';
 		} else {
 			$msg = JText::_('COM_HELPDESK_ENTRY_DELETED');
@@ -120,7 +120,7 @@ class HelpdeskControllerEntry extends JControllerForm
 			$msg = JText::_('COM_HELPDESK_ENTRY_PUBLISHED');
 			$type = 'message';
 		} else {
-			$msg = JText::_('COM_HELPDESK_ERROR_ENTRY_NOT_PUBLISHED')." - " .$model->getError();
+			$msg = JText::_('COM_HELPDESK_ERROR_ENTRY_CHANGE_PUBLISH_STATUS')." - " .$model->getError();
 			$type = 'error';
 		}
 		$this->setRedirect( JRoute::_('index.php?option=com_helpdesk', false), $msg, $type );
@@ -130,7 +130,7 @@ class HelpdeskControllerEntry extends JControllerForm
  	{
 		JRequest::checkToken() or jexit( 'Invalid Token' );
 		$model = $this->getModel('entry');
-		if($model->publish(0)) {
+		if ($model->publish(0)) {
 			$msg = JText::_('COM_HELPDESK_ENTRY_UNPUBLISHED');
 			$type = 'message';
 		} else {
