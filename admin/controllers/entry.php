@@ -48,11 +48,11 @@ class HelpdeskControllerEntry extends JControllerForm
 		
 		$data = JRequest::get('post');
 
-		$decline = $data['jform']['hstatus'];
-		$name = $data['jform']['hname'];
-		$comment = $data['jform']['hcomment'];
-		$usermail = $data['jform']['hmail'];
-		$decline_mail = $data['jform']['declinemail'];
+		$decline		= $data['jform']['hstatus'];
+		$name			= $data['jform']['hname'];
+		$comment		= $data['jform']['hcomment'];
+		$usermail		= $data['jform']['hmail'];
+		$decline_mail	= $data['jform']['declinemail'];
 
 		//ACL stuff
 		$canDo		= HelpdeskHelper::getActions();
@@ -75,18 +75,18 @@ class HelpdeskControllerEntry extends JControllerForm
   			$type = 'message';
 
   			if (($decline == -1) && ($decline_mail==1)) {
-				$body = JTEXT::_( 'Yours helpdeskentry was declined'). $comment;
+				$body = JText::_('COM_HELPDESK_ENTRY_DECLINED_MAIL_BODY'). $comment;
 				$mail->IsHTML(true);
-				$mail->setSubject( JTEXT::_( 'Helpdesk entry was declined' ) );
+				$mail->setSubject(JText::_('COM_HELPDESK_ENTRY_DECLINED_MAIL_SUBJECT'));
 				$mail->setBody( $body );
 				$mail->addRecipient( $usermail );
 				$mail->addBCC( $admins );
 				$mail->Send();
-				$msg .= ".  ".JText::_( 'Decline mail was sent' );
+				$msg .= ".  ".JText::_('COM_HELPDESK_DECLINE_MAIL_SENT');
   				$type = 'message';
 			}
 	    } else {
-	        $msg = JText::_( 'Error Saving Entry' );
+	        $msg = JText::_('COM_HELPDESK_ERROR_SAVING_ENTRY');
 	        $type = 'error';
 	    }
 
@@ -103,38 +103,40 @@ class HelpdeskControllerEntry extends JControllerForm
 		//Load model and delete entry - redirect afterwards
 		$model = $this->getModel( 'entry' );
 		if (!$model->delete()) {
-			$msg = JText::_( 'Error: Entry could not be deleted' );
+			$msg = JText::_('COM_HELPDESK_ERROR_ENTRY_NOT_DELETED');
 			$type = 'error';
 		} else {
-			$msg = JText::_( 'Entry Deleted' );
+			$msg = JText::_('COM_HELPDESK_ENTRY_DELETED');
 			$type = 'message';
 		}
 		$this->setRedirect( JRoute::_( 'index.php?option=com_helpdesk', false ), $msg, $type );
 	}
 
-	function publish() {
+	function publish()
+	{
 		JRequest::checkToken() or jexit( 'Invalid Token' );
 		$model = $this->getModel( 'entry' );
 		if ($model->publish(1)) {
-			$msg = JText::_( 'Entry published' );
+			$msg = JText::_('COM_HELPDESK_ENTRY_PUBLISHED');
 			$type = 'message';
 		} else {
-			$msg = JText::_( 'Error: Could not change publish status' )." - " .$model->getError();
+			$msg = JText::_('COM_HELPDESK_ERROR_ENTRY_NOT_PUBLISHED')." - " .$model->getError();
 			$type = 'error';
 		}
-		$this->setRedirect( JRoute::_( 'index.php?option=com_helpdesk', false ), $msg, $type );
+		$this->setRedirect( JRoute::_('index.php?option=com_helpdesk', false), $msg, $type );
 	}
 
- 	function unpublish() {
+ 	function unpublish()
+ 	{
 		JRequest::checkToken() or jexit( 'Invalid Token' );
-		$model = $this->getModel( 'entry' );
+		$model = $this->getModel('entry');
 		if($model->publish(0)) {
-			$msg = JText::_( 'Entry unpublished' );
+			$msg = JText::_('COM_HELPDESK_ENTRY_UNPUBLISHED');
 			$type = 'message';
 		} else {
-			$msg = JText::_( 'Error: Could not change publish status' )." - " .$model->getError();
+			$msg = JText::_('COM_HELPDESK_ERROR_ENTRY_CHANGE_PUBLISH_STATUS')." - " .$model->getError();
 			$type = 'error';
 		}
-		$this->setRedirect( JRoute::_( 'index.php?option=com_helpdesk', false ), $msg, $type );
+		$this->setRedirect( JRoute::_('index.php?option=com_helpdesk', false), $msg, $type );
 	}
 }
