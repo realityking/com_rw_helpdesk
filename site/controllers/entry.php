@@ -1,9 +1,6 @@
 <?php
-
 // no direct access
-
 defined( '_JEXEC' ) or die( 'Restricted access' );
-
 
 /**
  * Helpdesk Component Controller
@@ -228,7 +225,7 @@ class HelpdeskControllerEntry extends JController
 	}
 
 	function publish() {
-		$model = $this->getModel('entry' ;
+		$model = $this->getModel('entry');
 		switch($model->publish()) {
 			case -1: $msg = JText::_('COM_HELPDESK_ERROR_ENTRY_CHANGE_PUBLISH_STATUS');
 					 $type = 'error';
