@@ -16,7 +16,6 @@ class HelpdeskModelEntry extends JModelAdmin
 	var $_data = null;
 	var $_id = null;			
 
-
 	/**
 	 * Constructor that retrieves the ID from the request
 	 *
@@ -30,7 +29,7 @@ class HelpdeskModelEntry extends JModelAdmin
 	    $array = JRequest::getVar('cid',  0, '', 'array');
 	    $this->setId((int)$array[0]);
 	}
-	
+
 	/**
  	* Method to set the entry identifier
  	*
@@ -44,7 +43,7 @@ class HelpdeskModelEntry extends JModelAdmin
     	$this->_id        = $id;
     	$this->_data    = null;
 	}
-	
+
 	/**
  	* Method to get a entry
  	*
@@ -66,7 +65,7 @@ class HelpdeskModelEntry extends JModelAdmin
 
     	return $this->_data;
 	}
-	
+
 	/**
 	 * Method to store a record
  	*
@@ -97,21 +96,6 @@ class HelpdeskModelEntry extends JModelAdmin
 
     	return true;
 	}
-	
-	public function delete()
-	{
-	    $cids = JRequest::getVar( 'cid', array(0), 'post', 'array' );
-	    $row =& $this->getTable();
-
-	    foreach($cids as $cid) {
-	        if (!$row->delete( $cid )) {
-	            $this->setError( $row->_db->getErrorMsg() );
-	            return false;
-	        }
-	    }
-
-	    return true;
-	}
 
 	// Publishes an entry or unpublishes it
 	public function publish($state)
@@ -126,7 +110,7 @@ class HelpdeskModelEntry extends JModelAdmin
 	
 	    return true;
 	}
-	
+
 	public function getForm($data = array(), $loadData = true)
 	{
 		$app = JFactory::getApplication();
@@ -139,7 +123,7 @@ class HelpdeskModelEntry extends JModelAdmin
 
 		return $form;
 	}
-	
+
 	protected function loadFormData()
 	{
 		$app = JFactory::getApplication();

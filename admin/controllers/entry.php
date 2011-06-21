@@ -99,15 +99,28 @@ class HelpdeskControllerEntry extends JControllerForm
 	 */
 	function remove()
 	{
-		JRequest::checkToken() or jexit( 'Invalid Token' );
-		//Load model and delete entry - redirect afterwards
-		$model = $this->getModel( 'entry' );
-		if (!$model->delete()) {
-			$msg = JText::_('COM_HELPDESK_ERROR_ENTRY_DELETED');
-			$type = 'error';
+		// Check for request forgeries
+		JRequest::checkToken() or jexit('Invalid Token');
+
+		// Get items to remove from the request.
+		$cid = JRequest::getVar('cid', array(), '', 'array');
+
+		if (!is_array($cid) || count($cid) < 1) {
+			JError::raiseWarning(500, JText::_($this->text_prefix.'_NO_ITEM_SELECTED'));
 		} else {
-			$msg = JText::_('COM_HELPDESK_ENTRY_DELETED');
-			$type = 'message';
+			// Get the model.
+			$model = $this->getModel();
+
+			// Make sure the item ids are integers
+			jimport('joomla.utilities.arrayhelper');
+			JArrayHelper::toInteger($cid);
+
+			// Remove the items.
+			if ($model->delete($cid)) {
+				$this->setMessage(JText::plural($this->text_prefix.'_N_ITEMS_DELETED', count($cid)));
+			} else {
+				$this->setMessage($model->getError());
+			}
 		}
 		$this->setRedirect( JRoute::_( 'index.php?option=com_helpdesk', false ), $msg, $type );
 	}

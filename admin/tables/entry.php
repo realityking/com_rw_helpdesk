@@ -20,13 +20,23 @@ class TableEntry extends JTable
     var $hcomment = null;
 	var $published = null;
 	var $decline = null;
-    	var $hfac = null;
+    var $hfac = null;
 	var $hmajor = null;
 	var $hfile = null;
 	var $htype = null;
 	var $hsize = null;
 	var $hstatus = null;
-	
+
+    /**
+     * Constructor
+     *
+     * @param object Database connector object
+     */
+	function __construct(&$db)
+	{
+		parent::__construct('#__helpdesk', 'id', $db);
+	}
+
     /**
      * Constructor
      *
@@ -35,6 +45,5 @@ class TableEntry extends JTable
     function TableEntry( &$db ) {
         parent::__construct('#__helpdesk', 'id', $db);
     }
-    
 }
 ?>
