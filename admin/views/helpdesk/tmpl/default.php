@@ -5,9 +5,8 @@ JHtml::_('behavior.multiselect');
 
 $user = JFactory::getUser();
 ?>
-<form action="index.php" method="post" name="adminForm" id="adminForm">
-<div id="editcell">
-    <table class="adminlist">
+<form action="<?php echo JRoute::_('index.php?option=com_helpdesk&view=helpdesk'); ?>" method="post" name="adminForm" id="adminForm">
+<table class="adminlist">
     <thead>
         <tr>
             <th width="20">
@@ -52,11 +51,8 @@ $user = JFactory::getUser();
                 <?php echo $item->hname; ?>
             </td>
             <td>
-				<span class="hasTip" title="<?php echo $item->htext?>">
-					<a href="<?php echo JRoute::_( 'index.php?option=com_helpdesk&task=entry.edit&id='.$item->id); ?>">
-						<?php echo substr($item->htext,0,50)."..."; ?>
-					</a>
-				</span>
+				<a href="<?php echo JRoute::_( 'index.php?option=com_helpdesk&task=entry.edit&id='.$item->id); ?>">
+					<?php echo substr($item->htext,0,50)."..."; ?></a>
             </td>
             <td>
                 <?php
@@ -83,20 +79,15 @@ $user = JFactory::getUser();
                 <?php echo JHtml::_('date', $item->hdate, JText::_('DATE_FORMAT_LC2')) ?>
             </td>
 			<td>
-				<?php if ($item->hcomment){ echo '<img src="images/tick.png" class="hasTip" title="'.$item->hcomment.'" alt="Has a comment" />';} ?>
+				<?php if ($item->hcomment){ echo '<img src="images/tick.png" alt="Has a comment" />';} ?>
 			</td>
 		</tr>
-		<?php
-	endforeach;?>
+		<?php endforeach;?>
 	</tbody>
-    </table>
+</table>
 
     <input type="hidden" name="option" value="com_helpdesk" />
 	<input type="hidden" name="task" value="" />
 	<input type="hidden" name="boxchecked" value="0" />
 	<?php echo JHtml::_('form.token'); ?>
-</div>
 </form>
-<div class="padding">
-</div>
-
