@@ -20,20 +20,23 @@ class HelpdeskViewHelpdesk extends JView
         $canDo = HelpdeskHelper::getActions();
 
 		JToolBarHelper::title(JText::_('COM_HELPDESK_MANAGER_HELPDESK'), 'helpdesk' );
-		if ($canDo->get('core.edit.state')) {
-			JToolBarHelper::publishList('helpdesk.publish');
-			JToolBarHelper::unpublishList('helpdesk.unpublish');
-		}
-		if ($canDo->get('core.delete')) {
-			JToolBarHelper::deleteList('', 'helpdesk.delete');
+		if ($canDo->get('core.create')) {
+			JToolBarHelper::addNew('entry.add');
 		}
 		if ($canDo->get('core.edit')) {
 			JToolBarHelper::editList('entry.edit');
 		}
-		if ($canDo->get('core.create')) {
-			JToolBarHelper::addNew('entry.add');
+		if ($canDo->get('core.edit.state')) {
+			JToolBarHelper::divider();
+			JToolBarHelper::publishList('helpdesk.publish');
+			JToolBarHelper::unpublishList('helpdesk.unpublish');
+		}
+		if ($canDo->get('core.delete')) {
+			JToolBarHelper::divider();
+			JToolBarHelper::deleteList('', 'helpdesk.delete');
 		}
 		if ($canDo->get('core.admin')) {
+			JToolBarHelper::divider();
 			JToolBarHelper::preferences('com_helpdesk', '500');
 		}
 		JHtml::_('stylesheet', 'admin.css', JURI::root().'/media/com_helpdesk/css/');
