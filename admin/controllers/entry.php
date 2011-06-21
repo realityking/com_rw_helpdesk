@@ -119,7 +119,7 @@ class HelpdeskControllerEntry extends JControllerForm
 				$this->setMessage($model->getError());
 			}
 		}
-		$this->setRedirect( JRoute::_( 'index.php?option=com_helpdesk', false ), false);
+		$this->setRedirect( JRoute::_( 'index.php?option=com_helpdesk', false ));
 	}
 
 	function publish()
@@ -127,22 +127,39 @@ class HelpdeskControllerEntry extends JControllerForm
 		// Check for request forgeries
 		JRequest::checkToken() or jexit('JINVALID_TOKEN');
 
-		$cids = JRequest::getVar('cid', array(0), 'post', 'array');
+		$cid = JRequest::getVar('cid', array(0), 'post', 'array');
 
-		// Get the model.
-		$model = $this->getModel( 'entry' );
-
-		// Make sure the item ids are integers
-		JArrayHelper::toInteger($cid);
-
-		if ($model->publish($cids, 1)) {
-			$msg = JText::_('COM_HELPDESK_ENTRY_PUBLISHED');
-			$type = 'message';
-		} else {
-			$msg = JText::_('COM_HELPDESK_ERROR_ENTRY_CHANGE_PUBLISH_STATUS')." - " .$model->getError();
-			$type = 'error';
+		if (empty($cid)) {
+			JError::raiseWarning(500, JText::_($this->text_prefix.'_NO_ITEM_SELECTED'));
 		}
-		$this->setRedirect( JRoute::_('index.php?option=com_helpdesk', false), $msg, $type);
+		else {
+			// Get the model.
+			$model = $this->getModel( 'entry' );
+
+			// Make sure the item ids are integers
+			JArrayHelper::toInteger($cid);
+
+			// Publish the items.
+			if (!$model->publish($cid, 1)) {
+				JError::raiseWarning(500, $model->getError());
+			}
+			else {
+				if ($value == 1) {
+					$ntext = $this->text_prefix.'_N_ITEMS_PUBLISHED';
+				}
+				else if ($value == 0) {
+					$ntext = $this->text_prefix.'_N_ITEMS_UNPUBLISHED';
+				}
+				else if ($value == 2) {
+					$ntext = $this->text_prefix.'_N_ITEMS_ARCHIVED';
+				}
+				else {
+					$ntext = $this->text_prefix.'_N_ITEMS_TRASHED';
+				}
+				$this->setMessage(JText::plural($ntext, count($cid)));
+			}
+		}
+		$this->setRedirect( JRoute::_('index.php?option=com_helpdesk', false));
 	}
 
  	function unpublish()
@@ -150,21 +167,38 @@ class HelpdeskControllerEntry extends JControllerForm
 		// Check for request forgeries
 		JRequest::checkToken() or jexit('JINVALID_TOKEN');
 
-		$cids = JRequest::getVar('cid', array(0), 'post', 'array');
+		$cid = JRequest::getVar('cid', array(0), 'post', 'array');
 
-		// Get the model.
-		$model = $this->getModel('entry');
-
-		// Make sure the item ids are integers
-		JArrayHelper::toInteger($cid);
-
-		if ($model->publish($cids, 0)) {
-			$msg = JText::_('COM_HELPDESK_ENTRY_UNPUBLISHED');
-			$type = 'message';
-		} else {
-			$msg = JText::_('COM_HELPDESK_ERROR_ENTRY_CHANGE_PUBLISH_STATUS')." - " .$model->getError();
-			$type = 'error';
+		if (empty($cid)) {
+			JError::raiseWarning(500, JText::_($this->text_prefix.'_NO_ITEM_SELECTED'));
 		}
-		$this->setRedirect( JRoute::_('index.php?option=com_helpdesk', false), $msg, $type);
+		else {
+			// Get the model.
+			$model = $this->getModel('entry');
+
+			// Make sure the item ids are integers
+			JArrayHelper::toInteger($cid);
+
+			// Publish the items.
+			if (!$model->publish($cid, 0)) {
+				JError::raiseWarning(500, $model->getError());
+			}
+			else {
+				if ($value == 1) {
+					$ntext = $this->text_prefix.'_N_ITEMS_PUBLISHED';
+				}
+				else if ($value == 0) {
+					$ntext = $this->text_prefix.'_N_ITEMS_UNPUBLISHED';
+				}
+				else if ($value == 2) {
+					$ntext = $this->text_prefix.'_N_ITEMS_ARCHIVED';
+				}
+				else {
+					$ntext = $this->text_prefix.'_N_ITEMS_TRASHED';
+				}
+				$this->setMessage(JText::plural($ntext, count($cid)));
+			}
+		}
+		$this->setRedirect( JRoute::_('index.php?option=com_helpdesk', false));
 	}
 }
