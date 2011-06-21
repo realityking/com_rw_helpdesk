@@ -27,15 +27,6 @@ class HelpdeskControllerEntry extends JControllerForm
     	$this->registerTask('add', 'edit');
 	}
 
-	function edit()
-	{
-	    JRequest::setVar('view', 'entry');
-	    JRequest::setVar('layout', 'form');
-	    JRequest::setVar('hidemainmenu', 1);
-
-	    parent::display();
-	}
-
 	/**
 	 * save a record (and redirect to main page)
 	 * @return void
