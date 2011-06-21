@@ -43,7 +43,7 @@ JHtml::_('behavior.multiselect');
     $k = 0;
     for ($i=0, $n=count( $this->items ); $i < $n; $i++) {
         $row =& $this->items[$i];
-        $link = JRoute::_( 'index.php?option=com_helpdesk&controller=entry&task=edit&id='. $row->id );
+        $link = JRoute::_( 'index.php?option=com_helpdesk&task=entry.edit&id='. $row->id );
     ?>
         <tr class="<?php echo "row$k"; ?>">
             <td>

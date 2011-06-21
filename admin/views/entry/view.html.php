@@ -24,7 +24,7 @@ class HelpdeskViewEntry extends JView
 	    $isNew	= ($entry->id < 1);
 	
 	    JToolBarHelper::title(JText::_('COM_HELPDESK_MANAGER_ENTRY'), 'helpdesk' );
-	    JToolBarHelper::save();
+	    JToolBarHelper::save('entry.save');
 	    if (empty($this->item->id)) {
 			JToolBarHelper::cancel('entry.cancel', 'JTOOLBAR_CANCEL');
 		} else {

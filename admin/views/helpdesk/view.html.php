@@ -1,7 +1,5 @@
 <?php
-
 // no direct access
-
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
 jimport( 'joomla.application.component.view' );
@@ -23,17 +21,17 @@ class HelpdeskViewHelpdesk extends JView
 
 		JToolBarHelper::title(JText::_('COM_HELPDESK_MANAGER_HELPDESK'), 'helpdesk' );
 		if ($canDo->get('core.edit.state')) {
-			JToolBarHelper::publishList();
-			JToolBarHelper::unpublishList();
+			JToolBarHelper::publishList('helpdesk.publish');
+			JToolBarHelper::unpublishList('helpdesk.unpublish');
 		}
 		if ($canDo->get('core.delete')) {
-			JToolBarHelper::deleteList();
+			JToolBarHelper::deleteList('', 'helpdesk.delete');
 		}
 		if ($canDo->get('core.edit')) {
-			JToolBarHelper::editList();
+			JToolBarHelper::editList('entry.edit');
 		}
 		if ($canDo->get('core.create')) {
-			JToolBarHelper::addNew();
+			JToolBarHelper::addNew('entry.add');
 		}
 		if ($canDo->get('core.admin')) {
 			JToolBarHelper::preferences('com_helpdesk', '500');
