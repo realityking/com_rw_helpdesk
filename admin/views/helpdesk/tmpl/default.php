@@ -92,7 +92,6 @@ JHtml::_('behavior.multiselect');
     <input type="hidden" name="option" value="com_helpdesk" />
 	<input type="hidden" name="task" value="" />
 	<input type="hidden" name="boxchecked" value="0" />
-	<input type="hidden" name="controller" value="entry" />
 	<?php echo JHtml::_('form.token'); ?>
 </div>
 </form>
