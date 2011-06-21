@@ -28,9 +28,9 @@ class HelpdeskViewHelpdesk extends JView
 		JHtml::_('stylesheet', 'helpdesk.css', JURI::root().'/media/com_helpdesk/css/');
 		
 		// Get some Data
-		$entrys		= $this->get( 'Data' );
-		$count		= $this->get( 'Total' );
-		$pagination	= $this->get( 'Pagination' );
+		$entrys		= $this->get('Items');
+		$count		= $this->get('Total');
+		$pagination	= $this->get('Pagination');
 		
 		// Show RSS Feed
 		$link		= '&format=feed&limitstart=';

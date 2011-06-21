@@ -29,7 +29,7 @@ class HelpdeskModelEntry extends JModel
     	$id = JRequest::getVar('cid',  0, '', 'int');
     	$this->setId($id);
 	}
-	
+
 	/**
  	* Method to set the entry identifier
  	*
@@ -43,7 +43,7 @@ class HelpdeskModelEntry extends JModel
     	$this->_id        = $id;
     	$this->_data    = null;
 	}
-	
+
 	/**
  	* Method to get a entry
  	* @return object with data
@@ -77,7 +77,7 @@ class HelpdeskModelEntry extends JModel
     	}    	    
     	return $this->_data;
 	}
-	
+
 	/**
 	 * Method to store a record
  	*
@@ -126,7 +126,7 @@ class HelpdeskModelEntry extends JModel
 
     	return true;
 	}
-	
+
 	function delete()
 	{
     	$row =& $this->getTable();
@@ -152,7 +152,7 @@ class HelpdeskModelEntry extends JModel
 		}
 		return (int)!$status;
 	}
-	
+
 	function validate(&$data)
 	{
     	$app = JFactory::getApplication();
