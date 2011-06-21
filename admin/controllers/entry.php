@@ -42,6 +42,9 @@ class HelpdeskControllerEntry extends JControllerForm
 	 */
 	function save()
 	{
+		// Check for request forgeries.
+		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+
  		$uri  = JFactory::getURI();
 		$mail = JFactory::getMailer();
 		$db   = JFactory::getDBO();
@@ -66,7 +69,6 @@ class HelpdeskControllerEntry extends JControllerForm
 		$db->setQuery( $query );
 		$admins = $db->loadResultArray();
 
-		JRequest::checkToken() or jexit( 'Invalid Token' );
 		$model = $this->getModel( 'entry' );
 
 		$msg = '';
@@ -100,7 +102,7 @@ class HelpdeskControllerEntry extends JControllerForm
 	function remove()
 	{
 		// Check for request forgeries
-		JRequest::checkToken() or jexit('Invalid Token');
+		JRequest::checkToken() or jexit('JINVALID_TOKEN');
 
 		// Get items to remove from the request.
 		$cid = JRequest::getVar('cid', array(), '', 'array');
@@ -127,7 +129,9 @@ class HelpdeskControllerEntry extends JControllerForm
 
 	function publish()
 	{
-		JRequest::checkToken() or jexit( 'Invalid Token' );
+		// Check for request forgeries
+		JRequest::checkToken() or jexit('JINVALID_TOKEN');
+
 		$model = $this->getModel( 'entry' );
 		if ($model->publish(1)) {
 			$msg = JText::_('COM_HELPDESK_ENTRY_PUBLISHED');
@@ -141,7 +145,9 @@ class HelpdeskControllerEntry extends JControllerForm
 
  	function unpublish()
  	{
-		JRequest::checkToken() or jexit( 'Invalid Token' );
+		// Check for request forgeries
+		JRequest::checkToken() or jexit('JINVALID_TOKEN');
+
 		$model = $this->getModel('entry');
 		if ($model->publish(0)) {
 			$msg = JText::_('COM_HELPDESK_ENTRY_UNPUBLISHED');
