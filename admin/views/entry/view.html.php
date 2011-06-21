@@ -34,9 +34,9 @@ class HelpdeskViewEntry extends JView
 		$config =& JFactory::getConfig();
 		$offset = $config->getValue('config.offset');
 		
-		$date =& JFactory::getDate($entry->gbdate);
+		$date =& JFactory::getDate($entry->hdate);
 		$date->setOffset($offset);
-		$entry->gbdate = $date->toFormat();
+		$entry->hdate = $date->toFormat();
 		
 	    $this->assignRef('entry', $entry);
 	    parent::display($tpl);
