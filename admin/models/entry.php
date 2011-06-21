@@ -101,14 +101,8 @@ class HelpdeskModelEntry extends JModelAdmin
 	public function publish($state)
 	{
 		$cids = JRequest::getVar( 'cid', array(0), 'post', 'array' );
-	    $row =& $this->getTable();
 
-		if (!$row->publish( $cids, $state )) {
-			$this->setError( $row->getError() );
-			return false;
-		}
-	
-	    return true;
+	    return parent::publish($cids, $state);
 	}
 
 	public function getForm($data = array(), $loadData = true)
