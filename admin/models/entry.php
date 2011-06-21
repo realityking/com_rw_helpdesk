@@ -45,28 +45,6 @@ class HelpdeskModelEntry extends JModelAdmin
 	}
 
 	/**
- 	* Method to get a entry
- 	*
- 	* @return object with data
- 	*/
-	function getData()
-	{
-    	// Load the data
-    	if(empty( $this->_data )) {
-       	 $query = ' SELECT * FROM #__helpdesk '.
-       	         '  WHERE id = '.$this->_id;
-       	 $this->_db->setQuery( $query );
-       	 $this->_data = $this->_db->loadObject();
-    	}
-    	if (!$this->_data) {
-    	    $this->_data = $this->getTable();
-    	    $this->_data->id = 0;
-    	}
-
-    	return $this->_data;
-	}
-
-	/**
 	 * Method to store a record
  	*
  	* @return    boolean    True on success
@@ -120,10 +98,8 @@ class HelpdeskModelEntry extends JModelAdmin
 
 	protected function loadFormData()
 	{
-		$app = JFactory::getApplication();
-		
-		$data = $this->getData();
-		
+		$data = $this->getItem();
+
 		return $data;
 	}
 }

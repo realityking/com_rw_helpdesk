@@ -17,8 +17,8 @@ class HelpdeskViewEntry extends JView
 	     
 	    JHtml::_('stylesheet', 'admin.css', JURI::root().'/media/com_helpdesk/css/');
 	     
-	    $entry =& $this->get('Data');
-	    $this->item = $this->get('Data');
+	    $entry =& $this->get('Item');
+	    $this->item = $this->get('Item');
 	    $this->form	= $this->get('Form');
 	    
 	    $isNew	= ($entry->id < 1);
