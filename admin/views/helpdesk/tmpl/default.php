@@ -15,6 +15,9 @@ JHtml::_('behavior.multiselect');
                 <?php echo JText::_('COM_HELPDESK_AUTHOR'); ?>
             </th>
             <th>
+                <?php echo JText::_('COM_HELPDESK_MESSAGE'); ?>
+            </th>
+            <th>
                 <?php echo JText::_('COM_HELPDESK_STATUS'); ?>
             </th>
             <th>
@@ -22,9 +25,6 @@ JHtml::_('behavior.multiselect');
             </th>
             <th>
                 <?php echo JText::_('COM_HELPDESK_DATE'); ?>
-            </th>
-            <th>
-                <?php echo JText::_('COM_HELPDESK_MESSAGE'); ?>
             </th>
             <th>
                 <?php echo JText::_('COM_HELPDESK_COMMENT'); ?>
@@ -54,6 +54,9 @@ JHtml::_('behavior.multiselect');
                 <?php echo $row->hname; ?>
             </td>
             <td>
+                <span class="hasTip" title="<?php echo $row->htext?>"><a href="<?php echo $link ?>"><?php echo substr($row->htext,0,50)."..."; ?></a></span>
+            </td>
+            <td>
                 <?php
 		switch($row->hstatus) {
 			case '-1':
@@ -76,9 +79,6 @@ JHtml::_('behavior.multiselect');
 			</td>
 			<td>
                 <?php echo JHtml::_('date', $row->hdate, JText::_('DATE_FORMAT_LC2')) ?>
-            </td>
-            <td>
-                <span class="hasTip" title="<?php echo $row->htext?>"><a href="<?php echo $link ?>"><?php echo substr($row->htext,0,50)."..."; ?></a></span>
             </td>
 			<td>
 				<?php if ($row->hcomment){ echo '<img src="images/tick.png" class="hasTip" title="'.$row->hcomment.'" alt="Has a comment" />';} ?>
