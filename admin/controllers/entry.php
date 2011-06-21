@@ -87,7 +87,7 @@ class HelpdeskControllerEntry extends JControllerForm
 	        $type = 'error';
 	    }
 
-		$this->setRedirect( 'index.php?option=com_helpdesk', $msg, $type );
+		$this->setRedirect( 'index.php?option=com_helpdesk', $msg, $type);
 	}
 
 	/**
@@ -115,13 +115,11 @@ class HelpdeskControllerEntry extends JControllerForm
 			// Remove the items.
 			if ($model->delete($cid)) {
 				$this->setMessage(JText::plural($this->text_prefix.'_N_ITEMS_DELETED', count($cid)));
-				$type = 'message';
 			} else {
 				$this->setMessage($model->getError());
-				$type = 'error';
 			}
 		}
-		$this->setRedirect( JRoute::_( 'index.php?option=com_helpdesk', false ), $msg, $type );
+		$this->setRedirect( JRoute::_( 'index.php?option=com_helpdesk', false ), false);
 	}
 
 	function publish()
@@ -129,15 +127,22 @@ class HelpdeskControllerEntry extends JControllerForm
 		// Check for request forgeries
 		JRequest::checkToken() or jexit('JINVALID_TOKEN');
 
+		$cids = JRequest::getVar('cid', array(0), 'post', 'array');
+
+		// Get the model.
 		$model = $this->getModel( 'entry' );
-		if ($model->publish(1)) {
+
+		// Make sure the item ids are integers
+		JArrayHelper::toInteger($cid);
+
+		if ($model->publish($cids, 1)) {
 			$msg = JText::_('COM_HELPDESK_ENTRY_PUBLISHED');
 			$type = 'message';
 		} else {
 			$msg = JText::_('COM_HELPDESK_ERROR_ENTRY_CHANGE_PUBLISH_STATUS')." - " .$model->getError();
 			$type = 'error';
 		}
-		$this->setRedirect( JRoute::_('index.php?option=com_helpdesk', false), $msg, $type );
+		$this->setRedirect( JRoute::_('index.php?option=com_helpdesk', false), $msg, $type);
 	}
 
  	function unpublish()
@@ -145,14 +150,21 @@ class HelpdeskControllerEntry extends JControllerForm
 		// Check for request forgeries
 		JRequest::checkToken() or jexit('JINVALID_TOKEN');
 
+		$cids = JRequest::getVar('cid', array(0), 'post', 'array');
+
+		// Get the model.
 		$model = $this->getModel('entry');
-		if ($model->publish(0)) {
+
+		// Make sure the item ids are integers
+		JArrayHelper::toInteger($cid);
+
+		if ($model->publish($cids, 0)) {
 			$msg = JText::_('COM_HELPDESK_ENTRY_UNPUBLISHED');
 			$type = 'message';
 		} else {
 			$msg = JText::_('COM_HELPDESK_ERROR_ENTRY_CHANGE_PUBLISH_STATUS')." - " .$model->getError();
 			$type = 'error';
 		}
-		$this->setRedirect( JRoute::_('index.php?option=com_helpdesk', false), $msg, $type );
+		$this->setRedirect( JRoute::_('index.php?option=com_helpdesk', false), $msg, $type);
 	}
 }

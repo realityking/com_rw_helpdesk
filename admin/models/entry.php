@@ -13,14 +13,6 @@ jimport('joomla.application.component.modeladmin');
  */
 class HelpdeskModelEntry extends JModelAdmin
 {
-	// Publishes an entry or unpublishes it
-	public function publish($state)
-	{
-		$cids = JRequest::getVar( 'cid', array(0), 'post', 'array' );
-
-	    return parent::publish($cids, $state);
-	}
-
 	public function getForm($data = array(), $loadData = true)
 	{
 		// Get the form.
