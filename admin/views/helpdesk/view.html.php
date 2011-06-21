@@ -30,10 +30,10 @@ class HelpdeskViewHelpdesk extends JView
 			JToolBarHelper::deleteList();
 		}
 		if ($canDo->get('core.edit')) {
-			JToolBarHelper::editListX();
+			JToolBarHelper::editList();
 		}
 		if ($canDo->get('core.create')) {
-			JToolBarHelper::addNewX();
+			JToolBarHelper::addNew();
 		}
 		if ($canDo->get('core.admin')) {
 			JToolBarHelper::preferences('com_helpdesk', '500');
