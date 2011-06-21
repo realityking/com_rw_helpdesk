@@ -1,5 +1,7 @@
 <?php
 defined('_JEXEC') or die ('Restricted access');
+
+JHtml::_('behavior.multiselect');
 ?>
 <form action="index.php" method="post" name="adminForm" id="adminForm">
 <div id="editcell">
@@ -7,7 +9,7 @@ defined('_JEXEC') or die ('Restricted access');
     <thead>
         <tr>
             <th width="20">
-    			<input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count( $this->items ); ?>);" />
+				<input type="checkbox" name="toggle" value="" title="<?php echo JText::_('JGLOBAL_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this);" />
 			</th>
 			<th width="40">
                 <?php echo JText::_('COM_HELPDESK_AUTHOR'); ?>
