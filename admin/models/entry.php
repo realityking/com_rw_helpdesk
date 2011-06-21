@@ -31,6 +31,20 @@ class HelpdeskModelEntry extends JModelAdmin
 	}
 
 	/**
+	 * Method to auto-populate the model state.
+	 *
+	 * Note. Calling getState in this method will result in recursion.
+	 *
+	 * @since	1.6
+	 */
+	protected function populateState()
+	{
+		// Load state from the request.
+		$pk = JRequest::getInt('id');
+		$this->setState('entry.id', $pk);
+	}
+
+	/**
  	* Method to set the entry identifier
  	*
  	* @param    int Entry identifier
@@ -44,37 +58,6 @@ class HelpdeskModelEntry extends JModelAdmin
     	$this->_data    = null;
 	}
 
-	/**
-	 * Method to store a record
- 	*
- 	* @return    boolean    True on success
- 	*/
-	public function store()
-	{    	
-    	$row =& $this->getTable();
-    	$data = JRequest::get('post');
-
-    	// Bind the form fields to the hello table
-    	if (!$row->bind($data['jform'])) {
-       	 	$this->setError($this->_db->getErrorMsg());
-        	return false;
-    	}
-
-		// Make sure the hello record is valid
-	    if (!$row->check()) {
-	        $this->setError($this->_db->getErrorMsg());
-	        return false;
-	    }
-
-   		// Store the entry to the database
-    	if (!$row->store()) {
-        	$this->setError($this->_db->getErrorMsg());
-        	return false;
-    	}
-
-    	return true;
-	}
-
 	// Publishes an entry or unpublishes it
 	public function publish($state)
 	{
@@ -85,8 +68,6 @@ class HelpdeskModelEntry extends JModelAdmin
 
 	public function getForm($data = array(), $loadData = true)
 	{
-		$app = JFactory::getApplication();
-
 		// Get the form.
 		$form = $this->loadForm('com_helpdesk.entry', 'entry', array('control' => 'jform', 'load_data' => $loadData));
 		if (empty($form)) {

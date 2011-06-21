@@ -36,6 +36,12 @@ class HelpdeskControllerEntry extends JControllerForm
 		// Check for request forgeries.
 		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
+		// Initialise variables.
+		$app		= JFactory::getApplication();
+		$lang		= JFactory::getLanguage();
+		$model		= $this->getModel();
+		$table		= $model->getTable();
+
  		$uri  = JFactory::getURI();
 		$mail = JFactory::getMailer();
 		$db   = JFactory::getDBO();
@@ -60,10 +66,8 @@ class HelpdeskControllerEntry extends JControllerForm
 		$db->setQuery( $query );
 		$admins = $db->loadResultArray();
 
-		$model = $this->getModel( 'entry' );
-
 		$msg = '';
-		if ($model->store()) {
+		if ($model->save($data['jform'])) {
         	$msg .= JText::_( 'Entry Saved' );
   			$type = 'message';
 
@@ -111,8 +115,10 @@ class HelpdeskControllerEntry extends JControllerForm
 			// Remove the items.
 			if ($model->delete($cid)) {
 				$this->setMessage(JText::plural($this->text_prefix.'_N_ITEMS_DELETED', count($cid)));
+				$type = 'message';
 			} else {
 				$this->setMessage($model->getError());
+				$type = 'error';
 			}
 		}
 		$this->setRedirect( JRoute::_( 'index.php?option=com_helpdesk', false ), $msg, $type );
