@@ -2,6 +2,8 @@
 defined('_JEXEC') or die ('Restricted access');
 
 JHtml::_('behavior.multiselect');
+
+$user = JFactory::getUser();
 ?>
 <form action="index.php" method="post" name="adminForm" id="adminForm">
 <div id="editcell">
@@ -40,7 +42,7 @@ JHtml::_('behavior.multiselect');
 	</tfoot>
     <tbody>
     <?php foreach ($this->items as $i => $item) :
-        $link = JRoute::_( 'index.php?option=com_helpdesk&task=entry.edit&id='. $item->id );
+        $canChange	= $user->authorise('core.edit.state', 'com_helpdesk');
     ?>
         <tr class="row<?php echo $i % 2; ?>">
             <td>
@@ -50,7 +52,11 @@ JHtml::_('behavior.multiselect');
                 <?php echo $item->hname; ?>
             </td>
             <td>
-                <span class="hasTip" title="<?php echo $item->htext?>"><a href="<?php echo $link ?>"><?php echo substr($item->htext,0,50)."..."; ?></a></span>
+				<span class="hasTip" title="<?php echo $item->htext?>">
+					<a href="<?php echo JRoute::_( 'index.php?option=com_helpdesk&task=entry.edit&id='.$item->id); ?>">
+						<?php echo substr($item->htext,0,50)."..."; ?>
+					</a>
+				</span>
             </td>
             <td>
                 <?php
@@ -71,7 +77,7 @@ JHtml::_('behavior.multiselect');
 		?>
 			</td>
 			<td class="center">
-				<?php echo JHtml::_('grid.published', $item, $i ); ?>
+				<?php echo JHtml::_('jgrid.published', $item->published, $i, 'helpdesk.', $canChange);?>
 			</td>
 			<td>
                 <?php echo JHtml::_('date', $item->hdate, JText::_('DATE_FORMAT_LC2')) ?>
