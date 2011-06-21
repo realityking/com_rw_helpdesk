@@ -39,25 +39,22 @@ JHtml::_('behavior.multiselect');
 		</tr>
 	</tfoot>
     <tbody>
-    <?php
-    $k = 0;
-    for ($i=0, $n=count( $this->items ); $i < $n; $i++) {
-        $row =& $this->items[$i];
-        $link = JRoute::_( 'index.php?option=com_helpdesk&task=entry.edit&id='. $row->id );
+    <?php foreach ($this->items as $i => $item) :
+        $link = JRoute::_( 'index.php?option=com_helpdesk&task=entry.edit&id='. $item->id );
     ?>
-        <tr class="<?php echo "row$k"; ?>">
+        <tr class="row<?php echo $i % 2; ?>">
             <td>
-  				  <?php echo JHtml::_( 'grid.id', $i, $row->id ); ?>
+				<?php echo JHtml::_('grid.id', $i, $item->id); ?>
 			</td>
             <td>
-                <?php echo $row->hname; ?>
+                <?php echo $item->hname; ?>
             </td>
             <td>
-                <span class="hasTip" title="<?php echo $row->htext?>"><a href="<?php echo $link ?>"><?php echo substr($row->htext,0,50)."..."; ?></a></span>
+                <span class="hasTip" title="<?php echo $item->htext?>"><a href="<?php echo $link ?>"><?php echo substr($item->htext,0,50)."..."; ?></a></span>
             </td>
             <td>
                 <?php
-		switch($row->hstatus) {
+		switch($item->hstatus) {
 			case '-1':
 				echo '<span class="helpdesk-declined">'.JText::_('COM_HELPDESK_DECLINED').'</span>';
 				break;
@@ -74,18 +71,17 @@ JHtml::_('behavior.multiselect');
 		?>
 			</td>
 			<td class="center">
-				<?php echo JHtml::_('grid.published', $row, $i ); ?>
+				<?php echo JHtml::_('grid.published', $item, $i ); ?>
 			</td>
 			<td>
-                <?php echo JHtml::_('date', $row->hdate, JText::_('DATE_FORMAT_LC2')) ?>
+                <?php echo JHtml::_('date', $item->hdate, JText::_('DATE_FORMAT_LC2')) ?>
             </td>
 			<td>
-				<?php if ($row->hcomment){ echo '<img src="images/tick.png" class="hasTip" title="'.$row->hcomment.'" alt="Has a comment" />';} ?>
+				<?php if ($item->hcomment){ echo '<img src="images/tick.png" class="hasTip" title="'.$item->hcomment.'" alt="Has a comment" />';} ?>
 			</td>
 		</tr>
 		<?php
-		$k = 1 - $k;
-	}?>
+	endforeach;?>
 	</tbody>
     </table>
 
