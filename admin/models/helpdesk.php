@@ -1,7 +1,5 @@
 <?php
-
 // no direct access
-
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
 jimport('joomla.application.component.modellist');
@@ -13,19 +11,6 @@ jimport('joomla.application.component.modellist');
  */
 class HelpdeskModelHelpdesk extends JModelList
 {
-	/**
-	 * Helpdesk entry array
-	 *
-	 * @var array
-	 */
-	var $_entry;
-	
-	var $_total;
-
-	var $_pagination;
-	
-	var $_version;
-	
 	function __construct()
 	{
 		parent::__construct();
