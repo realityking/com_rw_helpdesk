@@ -4,14 +4,14 @@
 
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
-jimport( 'joomla.application.component.model' );
+jimport('joomla.application.component.modellist');
 
 /**
  * Helpdesk Model
  *
  * @package    Helpdesk
  */
-class HelpdeskModelHelpdesk extends JModel
+class HelpdeskModelHelpdesk extends JModelList
 {
 	/**
 	 * Helpdesk entry array
@@ -44,56 +44,21 @@ class HelpdeskModelHelpdesk extends JModel
 		$this->setState('limit', $limit);
 		$this->setState('limitstart', $limitstart);		
 	}
-	
-	/**
-	 * Returns the query
-	 * @return string The query to be used to retrieve the rows from the database
-	 */
-	private function _buildQuery()
-	{
-		$query = "SELECT * FROM #__helpdesk"
-	. " ORDER BY hdate DESC";
 
+	/**
+	 * Method to build an SQL query to load the list data.
+	 *
+	 * @return	string	An SQL query
+	 */
+	protected function getListQuery()
+	{
+		// Create a new query object.
+		$db = JFactory::getDBO();
+		$query = $db->getQuery(true);
+		// Select some fields
+		$query->select('*');
+		// From the hello table
+		$query->from('#__helpdesk');
 		return $query;
-	}
-	
-	/**
-	 * Retrieves the helpdesk entrys
-	 *
-	 * @return array Array of objects containing the data from the database
-	 */
-	public function getData()
-	{
-		// Lets load the data if it doesn't already exist
-		if (empty( $this->_data )) {
-			$query = $this->_buildQuery();
-			$this->_data = $this->_getList( $query, $this->getState('limitstart'), $this->getState('limit') );
-		}
-
-		return $this->_data;
-	}
-
-	public function getPagination()
-	{
-		if (empty($this->_pagination)) 	{
-			jimport('joomla.html.pagination');
-			$this->_pagination = new JPagination( $this->getTotal(), $this->getState('limitstart'), $this->getState('limit') );
-		}
-
-		return $this->_pagination;
-	}
-	/**
-	 * Retrieves the count of helpdesk entrys
-	 *
-	 * @return array Array of objects containing the data from the database
-	 */
-	public function getTotal()
-	{
-		if (empty($this->_total)) {
-			$query = $this->_buildQuery();
-			$this->_total = $this->_getListCount($query);
-		}
-
-		return $this->_total;
 	}
 }

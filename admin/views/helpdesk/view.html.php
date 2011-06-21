@@ -41,11 +41,11 @@ class HelpdeskViewHelpdesk extends JView
 		JHtml::_('stylesheet', 'admin.css', JURI::root().'/media/com_helpdesk/css/');
 
         // Get data from the model
-		$items		=& $this->get( 'Data');
-		$pagination	= $this->get( 'Pagination' );
+		$items		= $this->get('Items');
+		$pagination	= $this->get('Pagination');
 		
-		$this->assignRef( 'pagination' , $pagination);
-        $this->assignRef( 'items', $items );
+		$this->assignRef('pagination' , $pagination);
+        $this->assignRef('items', $items);
 
         parent::display($tpl);
     }
