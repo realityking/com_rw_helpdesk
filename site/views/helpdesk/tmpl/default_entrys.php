@@ -1,5 +1,7 @@
-<?php // no direct access
-defined('_JEXEC') or die('Restricted access');
+<?php
+// no direct access
+defined('_JEXEC') or die;
+
 foreach ($this->entrys as $entry) {
 ?>
 <div class="h_frame 

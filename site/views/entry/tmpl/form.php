@@ -1,5 +1,7 @@
 <?php
-defined( '_JEXEC' ) or die( 'Restricted access' );
+// no direct access
+defined('_JEXEC') or die;
+
  # Javascript for SmilieInsert and Form Check
 global $Itemid;
 //echo $lang."!!! ".$Itemid;

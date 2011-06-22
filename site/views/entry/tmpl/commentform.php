@@ -1,5 +1,6 @@
 <?php
-defined( '_JEXEC' ) or die( 'Restricted access' );
+// no direct access
+defined('_JEXEC') or die;
 ?>
 <div id="helpdesk">
 <h2 class="componentheading"><?php echo $this->heading ?></h2>

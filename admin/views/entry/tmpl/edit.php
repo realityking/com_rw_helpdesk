@@ -1,5 +1,6 @@
 <?php
-defined('_JEXEC') or die ('Restricted access');
+// no direct access
+defined('_JEXEC') or die;
 ?>
 <form action="index.php" method="post" name="adminForm" id="adminForm">
 	<div class="width-60 fltlft">
@@ -80,6 +81,6 @@ defined('_JEXEC') or die ('Restricted access');
 		<input type="hidden" name="option" value="com_helpdesk" />
 		<?php echo $this->form->getInput('id'); ?>
 		<input type="hidden" name="task" value="" />
-		<?php echo JHtml::_( 'form.token' ); ?>
+		<?php echo JHtml::_('form.token'); ?>
 	</div>
 </form>
