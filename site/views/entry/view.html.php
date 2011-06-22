@@ -18,33 +18,33 @@ class HelpdeskViewEntry extends JView
 		$doc	= JFactory::getDocument();
 		$menus	= &JSite::getMenu();
 		$params	= &$app->getParams('com_helpdesk');
-		$task	= JRequest::getVar( 'task' );
+		$task	= JRequest::getVar('task');
 
 		// Set CSS File
 		JHtml::_('stylesheet', 'helpdesk.css', JURI::root().'/media/com_helpdesk/css/');
 
 		// Get data from the model
-		$entry	= & $this->get( 'Data');
+		$entry	= & $this->get('Data');
 
 		// Set the document page title
 		$menu = $menus->getActive();
 		switch($task) {
 			case 'add':
-				$doc->setTitle($heading = $menu->name." - ".JTEXT::_('Sign Helpdesk'));
+				$doc->setTitle($heading = $menu->title." - ".JTEXT::_('Sign Helpdesk'));
 				break;
 			case 'edit':
-				$doc->setTitle($heading = $menu->name." - ".JTEXT::_('Edit Entry'));
+				$doc->setTitle($heading = $menu->title." - ".JTEXT::_('Edit Entry'));
 				break;
 			case 'comment':
-				$doc->setTitle($heading = $menu->name." - ".JTEXT::_('Edit Comment'));
+				$doc->setTitle($heading = $menu->title." - ".JTEXT::_('Edit Comment'));
 				break;
 		}
 
 		$heading = $doc->getTitle();
 
-		$this->assignRef( 'heading',	$heading );
-		$this->assignRef( 'entry',	$entry);
-		$this->assignRef( 'params', 	$params);
+		$this->assignRef('heading',	$heading);
+		$this->assignRef('entry',	$entry);
+		$this->assignRef('params', 	$params);
 
 		parent::display($tpl);
 	}
