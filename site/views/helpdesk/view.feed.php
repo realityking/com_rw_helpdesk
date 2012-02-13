@@ -1,9 +1,8 @@
 <?php
 
-// Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die();
 
-jimport( 'joomla.application.component.view');
+jimport('joomla.application.component.view');
 
 class HelpdeskViewHelpdesk extends JView
 {
@@ -44,4 +43,3 @@ class HelpdeskViewHelpdesk extends JView
 		}
 	}
 }
-?>

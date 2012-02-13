@@ -1,8 +1,6 @@
 <?php
 
-// no direct access
-
-defined( '_JEXEC' ) or die( 'Restricted access' );
+defined('_JEXEC') or die;
 
 function HelpdeskBuildRoute(&$query)
 {
@@ -37,7 +35,6 @@ function HelpdeskBuildRoute(&$query)
 function HelpdeskParseRoute($segments)
 {
 	$vars = array();
-
 
 	//Handle View and Identifier
 	if ( $segments[0] == 'entry') {
@@ -86,5 +83,4 @@ function HelpdeskParseRoute($segments)
 		}
 		return $vars;
 	}
-
 }

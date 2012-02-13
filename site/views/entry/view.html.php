@@ -1,10 +1,8 @@
 <?php
 
-// no direct access
+defined('_JEXEC') or die;
 
-defined( '_JEXEC' ) or die( 'Restricted access' );
-
-jimport( 'joomla.application.component.view' );
+jimport('joomla.application.component.view');
 
 class HelpdeskViewEntry extends JView
 {

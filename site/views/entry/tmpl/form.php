@@ -1,5 +1,5 @@
 <?php
-// no direct access
+
 defined('_JEXEC') or die;
 
  # Javascript for SmilieInsert and Form Check

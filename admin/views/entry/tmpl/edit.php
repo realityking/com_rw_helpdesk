@@ -1,5 +1,5 @@
 <?php
-// no direct access
+
 defined('_JEXEC') or die;
 ?>
 <form action="index.php" method="post" name="adminForm" id="adminForm">

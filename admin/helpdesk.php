@@ -1,6 +1,6 @@
 <?php
-// no direct access
-defined('_JEXEC') or die ('Restricted access');
+
+defined('_JEXEC') or die;
 define('_HELPDESK_VERSION', '1.1');
 
 // Access check.

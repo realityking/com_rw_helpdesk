@@ -1,7 +1,6 @@
 <?php
 
-// no direct access
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die;
 
 class TableEntry extends JTable
 {
@@ -46,4 +45,3 @@ class TableEntry extends JTable
         parent::__construct('#__helpdesk', 'id', $db);
     }
 }
-?>

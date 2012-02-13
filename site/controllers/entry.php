@@ -1,6 +1,5 @@
 <?php
-// no direct access
-defined( '_JEXEC' ) or die( 'Restricted access' );
+defined('_JEXEC') or die;
 
 /**
  * Helpdesk Component Controller
@@ -214,7 +213,7 @@ class HelpdeskControllerEntry extends JController
 	{
 		//Load model and delete entry - redirect afterwards
 		$model = $this->getModel('entry');
-		if(!$model->delete()) {
+		if (!$model->delete()) {
 			$msg = JText::_('COM_HELPDESK_ERROR_ENTRY_DELETED');
 			$type = 'error';
 		} else {
@@ -226,7 +225,7 @@ class HelpdeskControllerEntry extends JController
 
 	function publish() {
 		$model = $this->getModel('entry');
-		switch($model->publish()) {
+		switch ($model->publish()) {
 			case -1: $msg = JText::_('COM_HELPDESK_ERROR_ENTRY_CHANGE_PUBLISH_STATUS');
 					 $type = 'error';
 					 break;
@@ -247,7 +246,7 @@ class HelpdeskControllerEntry extends JController
 	function savecomment()
 	{
 		$model = $this->getModel('entry');
-		if(!$model->savecomment()) {
+		if (!$model->savecomment()) {
 		      $msg = JText::_('COM_HELPDESK_COMMENT_ERROR_NOT_SAVED');
 		      $type = 'error';
 		} else {
@@ -257,4 +256,3 @@ class HelpdeskControllerEntry extends JController
 		$this->setRedirect( JRoute::_( 'index.php?option=com_helpdesk', false ), $msg, $type );
 	}
 }
-?>

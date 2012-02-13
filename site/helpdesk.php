@@ -1,16 +1,15 @@
 <?php
 
-// no direct access
 defined('_JEXEC') or die;
 
 define('_EASYBOOK_VERSION', '1.1');
 
 // Require the base controller
-require_once(JPATH_COMPONENT.'/controller.php');
+require_once JPATH_COMPONENT.'/controller.php';
 
-require_once(JPATH_COMPONENT.'/helpers/helpdesk.php');
-require_once(JPATH_COMPONENT.'/helpers/content.php');
-require_once(JPATH_COMPONENT.'/helpers/smilie.php');
+require_once JPATH_COMPONENT.'/helpers/helpdesk.php';
+require_once JPATH_COMPONENT.'/helpers/content.php';
+require_once JPATH_COMPONENT.'/helpers/smilie.php';
 
 // Require specific controller if requested
 if($controller = JRequest::getWord('controller')) {
