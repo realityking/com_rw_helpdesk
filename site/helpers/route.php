@@ -3,9 +3,6 @@
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
-// Component Helper
-jimport('joomla.application.component.helper');
-
 class HelpdeskHelperRoute
 {
 	public static function getHelpdeskRoute($id)

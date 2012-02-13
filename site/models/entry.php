@@ -158,7 +158,6 @@ class HelpdeskModelEntry extends JModel
     	$app = JFactory::getApplication();
     	$params = &$app->getParams('com_helpdesk');
     	$user = &JFactory::getUser();
-    	jimport( 'joomla.mail.helper' );
     	$errors = array();
 
 		$filename = $_FILES["hfile"]["name"];
